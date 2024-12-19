@@ -1,4 +1,4 @@
-"grid_size",num_elements,"codegen_u280_p54_runtime",codegen_u280_p54_throughput,codegen_u280_p60_runtime,codegen_u280_p60_throughput
+"grid_size",num_elements,"codegen_u280_p54_runtime","codegen_u280_p54_throughput","codegen_u280_p60_runtime","codegen_u280_p60_throughput"
 "30x30",900,"9230.41",35.101366,9064.39,35.7442696
 "60x60",3600,"9953.85",130.200877,9853.57,131.525934
 "100x100",10000,"10991",327.540715,11086.8,324.710467
