@@ -31,9 +31,14 @@ u280_300_x = query_300_df["num_elements"]
 u280_300_grid = query_300_df["grid_size"]
 u280_p54_300_y = query_300_df["codegen_u280_p54_throughput"]
 u280_p60_300_y = query_300_df["codegen_u280_p60_throughput"]
+u280_p84_300_y = query_300_df["codegen_u280_p84_throughput"]
+vck5000_p55_300_y = query_300_df["codegen_vck5000_p55_throughput"]
+
 u280_400_x = query_400_df["num_elements"]
 u280_p54_400_y = query_400_df["codegen_u280_p54_throughput"]
 u280_p60_400_y = query_400_df["codegen_u280_p60_throughput"]
+u280_p84_400_y = query_400_df["codegen_u280_p84_throughput"]
+vck5000_p55_400_y = query_400_df["codegen_vck5000_p55_throughput"]
 # cgen_u280 = df["codegen_u280"] / time_divisor
 # hand_vck5000 = df["handcoded_vck5000"] / time_divisor
 # cgen_vck5000 = df["codegen_vck5000"] / time_divisor
@@ -59,10 +64,16 @@ fig, ax = plt.subplots()
 # bar3=ax.bar(x+0.4, hand_vck5000, color='white', width=0.2, hatch='//', label='hand_vck5000', edgecolor='#90c46e')
 # bar3=ax.bar(x+0.4, hand_vck5000, color='none', width=0.2, edgecolor='black', **props)
 # ax2 = ax.twinx()
-line1 = ax.plot(u280_300_x[1:], u280_p54_300_y[1:], '-o', label="54PE x=300")
-line2 = ax.plot(u280_300_x[1:], u280_p60_300_y[1:], '-o', label="60PE x=300")
-line3 = ax.plot(u280_400_x, u280_p54_400_y, '-o', label="54PE x=400")
-line4 = ax.plot(u280_400_x, u280_p60_400_y, '-o', label="60PE x=400")
+line1 = ax.plot(u280_300_x[1:], u280_p54_300_y[1:], '-o', label="u280,p54/300")
+line2 = ax.plot(u280_300_x[1:], u280_p60_300_y[1:], '-o', label="u280,p60/300")
+line3 = ax.plot(u280_300_x[1:], u280_p84_300_y[1:], '-o', label="u280,p84/300")
+line4 = ax.plot(u280_400_x, u280_p54_400_y, '-o', label="u280,p54/400")
+line5 = ax.plot(u280_400_x, u280_p60_400_y, '-o', label="u280,p60/400")
+line6 = ax.plot(u280_400_x, u280_p84_400_y, '-o', label="u280,p84/400")
+
+#VCK
+line7 = ax.plot(u280_300_x[1:], vck5000_p55_300_y[1:], '-o', label="vck,p55/300")
+line8 = ax.plot(u280_400_x, vck5000_p55_400_y, '-o', label="vck,p55/400")
 # line2 = ax2.plot(x+0.25, vck5000_imp, color='#70915a', label="vck5000 Imp%")
 
 ax.yaxis.set_major_formatter(FormatStrFormatter('%.0f'))
@@ -78,18 +89,38 @@ plt.xticks(xticks)
 
 
 for ind, val in enumerate(u280_p54_300_y[1:].to_list()):
-       ax.text(u280_300_x[1:].to_list()[ind], val + (2 if ind%2 == 0 else -6), "{:.1f}".format(val), ha='center', size=10) 
+    if val == max(u280_p54_300_y[1:].to_list()):
+        ax.text(u280_300_x[1:].to_list()[ind], val + (2 if ind%2 == 0 else -6), "{:.1f}".format(val), ha='center', size=10) 
     #    ax.text(u280_300_x[1:].to_list()[ind] + 2000, val + 2 , f"(y={u280_300_grid[1:].to_list()[ind][4:]})", ha='center', size=10, rotation=90)
 
 for ind, val in enumerate(u280_p60_300_y[1:].to_list()):
+    if val == max(u280_p60_300_y[1:].to_list()):
         ax.text(u280_300_x[1:].to_list()[ind], val + (2 if ind%2 == 0 else -6), "{:.1f}".format(val), ha='center', size=10) 
 
+for ind, val in enumerate(u280_p84_300_y[1:].to_list()):
+    if val == max(u280_p84_300_y[1:].to_list()):
+        ax.text(u280_300_x[1:].to_list()[ind], val + (2 if ind%2 == 0 else -6), "{:.1f}".format(val), ha='center', size=10) 
+        
 for ind, val in enumerate(u280_p54_400_y.to_list()):
+    if val == max(u280_p54_400_y.to_list()):
         ax.text(u280_400_x.to_list()[ind], val + 2, "{:.1f}".format(val), ha='center', size=10) 
 
 for ind, val in enumerate(u280_p60_400_y.to_list()):
+    if val == max(u280_p60_400_y.to_list()):
         ax.text(u280_400_x.to_list()[ind], val + 2, "{:.1f}".format(val), ha='center', size=10) 
 
+for ind, val in enumerate(u280_p84_400_y.to_list()):
+    if val == max(u280_p84_400_y.to_list()):
+        ax.text(u280_400_x.to_list()[ind], val + 2, "{:.1f}".format(val), ha='center', size=10) 
+        
+#VCK
+for ind, val in enumerate(vck5000_p55_300_y[1:].to_list()):
+    if val == max(vck5000_p55_300_y[1:].to_list()):
+        ax.text(u280_300_x[1:].to_list()[ind], val + (2 if ind%2 == 0 else -6), "{:.1f}".format(val), ha='center', size=10) 
+        
+for ind, val in enumerate(vck5000_p55_400_y.to_list()):
+    if val == max(vck5000_p55_400_y.to_list()):
+        ax.text(u280_400_x.to_list()[ind], val + 2, "{:.1f}".format(val), ha='center', size=10)
 
 # ax.set_yscale('log')
 ax.set_axisbelow(True)
@@ -103,7 +134,7 @@ ax.set_xlabel('Number of Elements (Thousands)')
 ax.set_ylabel('Throughput (GOps/s)')
 
 
-ax.set_ylim([625, 825])
+ax.set_ylim([550, 975])
 # ax2.set_ylim([-20,60])
 
 # fig.tight_layout()
