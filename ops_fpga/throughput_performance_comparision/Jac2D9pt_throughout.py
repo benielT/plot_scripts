@@ -74,7 +74,7 @@ ax.set_xlabel('Mesh Size')
 ax.set_ylabel('Throughput (Gflops/s)')
 ax2.set_ylabel('% Improvement')
 
-ax.set_ylim([0, 700])
+ax.set_ylim([0, 1150])
 ax2.set_ylim([-5,100])
 
 fig.tight_layout()

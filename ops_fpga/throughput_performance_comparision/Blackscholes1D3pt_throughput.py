@@ -4,7 +4,7 @@ from matplotlib.ticker import FormatStrFormatter
 import pandas as pd
 
 # headers=["grid size","handcoded_u280","codegen_u280","handcoded_vck5000","codegen_vck5000"]
-df = pd.read_csv("Blackscholes3D3pt_throughput.csv")
+df = pd.read_csv("data/Blackscholes3D3pt_throughput.csv")
 
 print(df.head())
 
@@ -29,7 +29,6 @@ fig, ax = plt.subplots()
 props = {'linestyle':'--', 'linewidth':'1.0'}
 x = np.arange(xticks.size)
 kwargs={'alpha': 1.0}
-bar1=ax.bar(x+0.00, hand_u280, color='white', width=0.2, hatch='//', label='hand_u280')
 bar1=ax.bar(x+0.00, hand_u280, color='none', width=0.2, edgecolor='black', **props)
 bar2=ax.bar(x+0.2, cgen_u280, color='#6589cd', width=0.2, label='cgen_u280', edgecolor='black')
 bar4=ax.bar(x+0.6, cgen_vck5000, color='#90c46e', width=0.2, label='cgen_vck5000', edgecolor='black')
@@ -71,13 +70,13 @@ labels = labels1 + labels2
 
 ax.legend(handles, labels, loc=2, ncol=3, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 12})
 ax.set_xlabel('Mesh Size')
-ax.set_ylabel('Throughput (Gflops/s)')
+ax.set_ylabel('Throughput (GFLOP/s)')
 ax2.set_ylabel('% Improvement')
 
 ax.set_ylim([0, 600])
 ax2.set_ylim([-5,100])
 
 fig.tight_layout()
-plt.savefig("blackscholes1D3pt_throughput.pdf", bbox_inches='tight')
+plt.savefig("output/blackscholes1D3pt_throughput.pdf", bbox_inches='tight')
 
 # plt.show()
