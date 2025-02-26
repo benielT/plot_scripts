@@ -32,9 +32,9 @@ fig, ax = plt.subplots()
 
 # Add secondary y-axis for power usage
 ax2 = ax.twinx()
-ax2.plot(xticks, cgen_u280_power, linestyle='dashdot', marker='s', markersize=power_marker_size, label="U280 power", color='#6d65a3', markeredgecolor='#000000')#'#a59fd1')#'#f7b16a')
-ax2.plot(xticks, h100_1sys_power, linestyle='dashdot', marker='s', markersize=power_marker_size, label="H100 power", color='#fabb46', markeredgecolor='#000000')#'#92f0ab')#'#f5dc84')
-ax2.plot(xticks, h100_10sys_power, linestyle='dashdot', marker='s', markersize=power_marker_size, label="H100-10B power", color='#4dc46d', markeredgecolor='#000000')#'#92f0ab')#'#f5dc84')
+ax2.plot(xticks, cgen_u280_power, linestyle='dashdot', marker='s', markersize=power_marker_size, label="U280 energy", color='#6d65a3', markeredgecolor='#000000')#'#a59fd1')#'#f7b16a')
+ax2.plot(xticks, h100_1sys_power, linestyle='dashdot', marker='s', markersize=power_marker_size, label="H100 energy", color='#fabb46', markeredgecolor='#000000')#'#92f0ab')#'#f5dc84')
+ax2.plot(xticks, h100_10sys_power, linestyle='dashdot', marker='s', markersize=power_marker_size, label="H100_10B energy", color='#4dc46d', markeredgecolor='#000000')#'#92f0ab')#'#f5dc84')
 
 # Plot throughput data
 ax.plot(xticks, cgen_u280, linestyle='-', marker='o',markersize=throughput_marker_size, label='c_U280', color=colors[1])
@@ -61,7 +61,7 @@ ax2.yaxis.set_major_formatter(FormatStrFormatter('%.0f'))
 ax.grid(which='both', axis='y', linewidth=1, alpha=0.5)
 ax.set_xlabel('Mesh Size', fontsize=label_font_size)
 ax.set_ylabel('Throughput (GFLOP/s)', fontsize=label_font_size)
-ax2.set_ylabel('Power Usage - 50B (KJ)', fontsize=label_font_size)
+ax2.set_ylabel('Energy: 50 Batches (kJ)', fontsize=label_font_size)
 ax.set_xticks(xticks)
 ax.set_xticklabels(xticks, rotation=0)
 
