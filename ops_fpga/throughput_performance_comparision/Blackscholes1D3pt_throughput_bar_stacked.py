@@ -97,7 +97,7 @@ ax2.yaxis.set_major_formatter(FormatStrFormatter('%.0f'))
 ax.grid(which='both', axis='y', linewidth=1, alpha=0.5)
 ax.set_xlabel('Mesh Size', fontsize=label_font_size)
 ax.set_ylabel('Throughput (GFLOP/s)', fontsize=label_font_size)
-ax2.set_ylabel('Energy: 1k Batches (kJ)', fontsize=label_font_size)
+ax2.set_ylabel('Energy: 10k Batches (kJ)', fontsize=label_font_size)
 ax.set_xticks(x_indexes)
 ax.set_xticklabels(xticks, rotation=0)
 
