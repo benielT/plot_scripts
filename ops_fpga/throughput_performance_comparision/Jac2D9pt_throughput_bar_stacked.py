@@ -126,4 +126,4 @@ ax2.set_ylim([0, 50])
 
 # Save the figure
 fig.tight_layout()
-plt.savefig("output/jac2d9pt_throughput_bar_stacked_plot.pdf", bbox_inches='tight')
+plt.savefig("output/jac2d9pt_throughput_barplot.pdf", bbox_inches='tight')
