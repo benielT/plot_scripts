@@ -1,0 +1,6 @@
+app, our_work, SODA, Stencil-HMLS, Stencilflow
+Poisson2D, 862.07, , ,568.20
+Jacobi2D, 798, 90.04, , 
+Jacobi3D,727.07,83.98,,
+HeatDiff3D,929.17,134.91,,
+PWAdvect3D,271.46,,38.15,
