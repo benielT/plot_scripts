@@ -30,7 +30,7 @@ h100_10sys_power = df["pow_H100_50B_10SYS"]
 h100_50sys_power = df["pow_H100_50B_50SYS"]
 
 # Configure plot settings
-plt.rcParams["figure.figsize"] = (9, 5.5)
+plt.rcParams["figure.figsize"] = (9, 4.5)
 plt.rcParams.update({'font.size': general_font_size})
 plt.rcParams['hatch.linewidth'] = 2
 plt.rcParams['hatch.color'] = colors[1]
@@ -111,11 +111,11 @@ handles1, labels1 = ax.get_legend_handles_labels()
 handles2, labels2 = ax2.get_legend_handles_labels()
 handles = handles1 + handles2
 labels = labels1 + labels2
-ax.legend(handles, labels, loc=2, ncol=2, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 13})
+ax.legend(handles, labels, loc=2, ncol=3, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 13})
 
 # Set axis limits
-ax.set_ylim([0, 1300])
-ax2.set_ylim([0, 400])
+ax.set_ylim([0, 1400])
+ax2.set_ylim([0, 450])
 
 # Save the figure
 fig.tight_layout()

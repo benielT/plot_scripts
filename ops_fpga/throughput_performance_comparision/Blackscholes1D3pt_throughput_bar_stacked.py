@@ -26,7 +26,7 @@ h100_100b = df["H100_100B"][1:]
 
 
 # Configure plot settings
-plt.rcParams["figure.figsize"] = (9, 5.5)
+plt.rcParams["figure.figsize"] = (9, 4.5)
 plt.rcParams.update({'font.size': general_font_size})
 plt.rcParams['hatch.linewidth'] = 2
 plt.rcParams['hatch.color'] = colors[1]
