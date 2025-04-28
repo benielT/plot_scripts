@@ -23,6 +23,7 @@ h100_1b = df["H100_1B"]
 h100_10b = df["H100_10B"]
 
 cgen_u280_power = df["pow_C_U280_50B"]
+cgen_vck5000_power = df["pow_C_VCK5000_50B"]
 h100_1sys_power = df["pow_H100_50B_1SYS"]
 h100_10sys_power = df["pow_H100_50B_10SYS"]
 
@@ -98,6 +99,7 @@ ax2 = ax.twinx()
 # bar8 = ax2.bar(x_indexes + bar_width + energy_bar_gap, cgen_u280_power, width=energy_bar_width, hatch="\\\\\\", label='U280 energy', color='white')
 # bar8 = ax2.bar(x_indexes + bar_width + energy_bar_gap, cgen_u280_power, width=energy_bar_width, color='none', edgecolor='black', **outer_props)
 ax2.plot(x_indexes - bar_width, cgen_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size + 2, label="U280 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[12])
+ax2.plot(x_indexes, cgen_vck5000_power, linestyle='dashdot', marker='d', markersize=power_marker_size, label="VCK5000 energy", color='none', markerfacecolor='white', markeredgewidth=3, markeredgecolor=colors[13])
 ax2.plot(x_indexes  + bar_width, h100_1sys_power, linestyle='dashdot', marker='o', markersize=power_marker_size, label="H100 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[10])
 
 # Format the axes
@@ -117,11 +119,11 @@ handles1, labels1 = ax.get_legend_handles_labels()
 handles2, labels2 = ax2.get_legend_handles_labels()
 handles = handles1 + handles2
 labels = labels1 + labels2
-ax.legend(handles, labels, loc=2, ncol=2, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 13})
+ax.legend(handles, labels, loc=2, ncol=3, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 13})
 
 # Set axis limits
-ax.set_ylim([0, 1100])
-ax2.set_ylim([0, 330])
+ax.set_ylim([0, 1250])
+ax2.set_ylim([0, 300])
 
 # Save the figure
 fig.tight_layout()
