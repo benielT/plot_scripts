@@ -25,6 +25,7 @@ h100_10b = df["H100_10B"]
 h100_50b = df["H100_50B"]
 
 cgen_u280_power = df["pow_c_u280_50B"]
+cgen_vck5000_power = df["pow_c_vck5000_50B"]
 h100_power = df["pow_H100_50B_1SYS"]
 h100_10sys_power = df["pow_H100_50B_10SYS"]
 h100_50sys_power = df["pow_H100_50B_50SYS"]
@@ -79,6 +80,7 @@ bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, colo
 ax2 = ax.twinx()
 
 ax2.plot(x_indexes - bar_width, cgen_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size + 2, label="U280 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[12])
+ax2.plot(x_indexes, cgen_vck5000_power, linestyle='dashdot', marker='d', markersize=power_marker_size, label="VCK5000 energy", color='none', markerfacecolor='white', markeredgewidth=3, markeredgecolor=colors[13])
 ax2.plot(x_indexes + bar_width, h100_power, linestyle='dashdot', marker='o', markersize=power_marker_size, label="H100 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[10])
 
 # ax2.plot(x_indexes, cgen_4096_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_4096 energy", color='#6d65a3', markeredgecolor='#000000')
