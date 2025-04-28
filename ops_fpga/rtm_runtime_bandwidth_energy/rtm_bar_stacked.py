@@ -25,6 +25,7 @@ h100_1b = df["mpt_H100_1B"]
 # h100_10b = df["H100_10B"]
 
 cgen_u55c_power = df["pow_C_u55c_100B"]
+cgen_vck5000_power = df["pow_C_vck5000_100B"]
 h100_power = df["pow_H100_100B"]
 
 # Configure plot settings
@@ -75,8 +76,9 @@ bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, colo
 
 # Add secondary y-axis for power usage
 ax2 = ax.twinx()
-ax2.plot(x_indexes - bar_width, cgen_u55c_power, linestyle='dashdot', marker='^', markersize=power_marker_size + 2, label="U55c energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[12])
-ax2.plot(x_indexes + bar_width, h100_power, linestyle='dashdot', marker='o', markersize=power_marker_size, label="H100 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[10])
+ax2.plot(x_indexes[4:] - bar_width, cgen_u55c_power[4:], linestyle='dashdot', marker='^', markersize=power_marker_size + 2, label="U55c energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[12])
+ax2.plot(x_indexes[4:], cgen_vck5000_power[4:], linestyle='dashdot', marker='d', markersize=power_marker_size, label="VCK5000 energy", color='none', markerfacecolor='white', markeredgewidth=3, markeredgecolor=colors[13])
+ax2.plot(x_indexes[4:] + bar_width, h100_power[4:], linestyle='dashdot', marker='o', markersize=power_marker_size, label="H100 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[10])
 
 # ax2.plot(x_indexes, cgen_4096_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_4096 energy", color='#6d65a3', markeredgecolor='#000000')
 # ax2.plot(x_indexes, cgen_8192_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_8192 energy", color='#d9b3e6', markeredgecolor='#000000')
@@ -98,7 +100,7 @@ ax2.yaxis.set_major_formatter(FormatStrFormatter('%.0f'))
 # Labels, grid, and legend
 ax.grid(which='both', axis='y', linewidth=1, alpha=0.5)
 ax.set_xlabel('Mesh Size', fontsize=label_font_size)
-ax.set_ylabel('Throughput (GFLOP/s)', fontsize=label_font_size)
+ax.set_ylabel('Throughput (MPts/s)', fontsize=label_font_size)
 ax2.set_ylabel('Energy: 100 Batches (kJ)', fontsize=label_font_size)
 ax.set_xticks(x_indexes)
 ax.set_xticklabels(xticks, rotation=0)
@@ -108,10 +110,10 @@ handles1, labels1 = ax.get_legend_handles_labels()
 handles2, labels2 = ax2.get_legend_handles_labels()
 handles = handles1 + handles2
 labels = labels1 + labels2
-ax.legend(handles, labels, loc=2, ncol=2, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 13})
+ax.legend(handles, labels, loc=2, ncol=3, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 13})
 
 # Set axis limits
-ax.set_ylim([0, 1300])
+ax.set_ylim([0, 1600])
 ax2.set_ylim([0, 600])
 
 # Save the figure
