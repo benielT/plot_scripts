@@ -20,6 +20,7 @@ cgen_u280 = df["codegen_u280"][1:]
 hand_vck5000 = df["handcoded_vck5000"][1:]
 cgen_vck5000 = df["codegen_vck5000"][1:]
 cgen_u280_power = df["pow_C_U280_10000B"][1:]
+cgen_vck5000_power = df["pow_C_VCK5000_10000B"][1:]
 h100_power = df["pow_H100_10000B"][1:]
 h100_1b = df["H100_1B"][1:]
 h100_100b = df["H100_100B"][1:]
@@ -76,6 +77,7 @@ bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, colo
 ax2 = ax.twinx()
 # ax2.plot(x_indexes, cgen_4096_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_4096 energy", color='#6d65a3', markeredgecolor='#000000')
 ax2.plot(x_indexes - bar_width, cgen_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size + 2, label="U280 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[12])
+ax2.plot(x_indexes, cgen_vck5000_power, linestyle='dashdot', marker='d', markersize=power_marker_size, label="VCK5000 energy", color='none', markerfacecolor='white', markeredgewidth=3, markeredgecolor=colors[13])
 ax2.plot(x_indexes + bar_width, h100_power, linestyle='dashdot', marker='o', markersize=power_marker_size, label="H100 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[10])
 # plt.rcParams['hatch.color'] = colors[7]
 # bar9 = ax2.bar(x_indexes + bar_width + energy_bar_gap, h100_power, width=energy_bar_width, label='H100 energy', color=colors[10])
