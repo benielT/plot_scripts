@@ -15,7 +15,7 @@ df = pd.read_csv("data/Jac2D9pt_throughput.csv")
 # Extract data
 xticks = df["grid_size"]
 hand_u280 = df["handcoded_u280"]
-cgen_4096_u280 = df["codegen_L_4096_u280"]
+cgen_4096_u280 = df["codegen_L_4096_H_10_u280"]
 cgen_8192_u280 = df["codegen_L_8192_u280"]
 hand_vck5000 = df["handcoded_vck5000"]
 cgen_vck5000 = df["codegen_vck5000"]
