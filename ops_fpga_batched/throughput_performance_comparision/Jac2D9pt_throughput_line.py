@@ -81,5 +81,5 @@ ax.set_ylim([0, 1700])
 
 # Save the figure
 fig.tight_layout()
-plt.savefig("output/jac2d9pt_throughput_lineplot.pdf", bbox_inches='tight')
+plt.savefig("output/jac2d9p_batched_throughput_lineplot.pdf", bbox_inches='tight')
 # plt.show()
