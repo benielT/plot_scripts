@@ -108,8 +108,8 @@ labels = labels1 + labels2
 ax.legend(handles, labels, loc=2, ncol=1, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 13})
 
 # Set axis limits
-ax.set_ylim([0, 800])
-ax2.set_ylim([0, 10])
+ax.set_ylim([0, 1000])
+ax2.set_ylim([0, 20])
 
 # Save the figure
 fig.tight_layout()
