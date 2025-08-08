@@ -23,7 +23,7 @@ cgen_u280_power = df["pow_C_U280_10000B"][1:]
 cgen_vck5000_power = df["pow_C_VCK5000_10000B"][1:]
 h100_power = df["pow_H100_10000B"][1:]
 h100_1b = df["H100_1B"][1:]
-h100_100b = df["H100_100B"][1:]
+h100_50b = df["H100_50B"][1:]
 
 
 # Configure plot settings
@@ -55,8 +55,8 @@ plt.rcParams['hatch.color'] = colors[0]
 bar4 = ax.bar(x_indexes + bar_offset, hand_vck5000, width=bar_width, label='h_VCK', color='white', hatch='///')
 bar4 = ax.bar(x_indexes + bar_offset, hand_vck5000, width=bar_width, color='none', edgecolor='black', **iner_props)
 
-bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_100b, width=bar_width, label='H100_100B', color=colors[9])
-bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_100b, width=bar_width, color='none', edgecolor='black', **iner_props)
+bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_50b, width=bar_width, label='H100_50B', color=colors[9])
+bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_50b, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 plt.rcParams['hatch.color'] = colors[9]
 bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, label='H100_1B', color='white', hatch='---')
@@ -71,7 +71,7 @@ bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, colo
 # bar4 = ax.bar(x_indexes + bar_width, hand_vck5000, width=bar_width, color='none', edgecolor='black', **props)
 # bar5 = ax.bar(x_indexes + 2 * bar_width, cgen_vck5000, width=bar_width, label='c_VCK', color=colors[2])
 # bar6 = ax.bar(x_indexes + 3 * bar_width, h100_1b, width=bar_width, label='H100_1B', color=colors[4])
-# bar7 = ax.bar(x_indexes + 4 * bar_width, h100_100b, width=bar_width, label='H100_100B', color=colors[5])
+# bar7 = ax.bar(x_indexes + 4 * bar_width, h100_50b, width=bar_width, label='H100_50B', color=colors[5])
 
 # Add secondary y-axis for power usage
 ax2 = ax.twinx()
