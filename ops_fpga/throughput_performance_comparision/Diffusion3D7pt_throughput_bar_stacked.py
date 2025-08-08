@@ -60,11 +60,13 @@ bar6 = ax.bar(x_indexes[:4] + bar_width + bar_offset, h100_10b[:4], width=bar_wi
 bar6 = ax.bar(x_indexes[:4] + bar_width + bar_offset, h100_10b[:4], width=bar_width, color='none', edgecolor='black', **iner_props)
 
 plt.rcParams['hatch.color'] = colors[9]
+bar6 = ax.bar(x_indexes[4:] + bar_width + bar_offset, h100_10b[4:], width=bar_width, color=colors[9])
+bar6 = ax.bar(x_indexes[4:] + bar_width + bar_offset, h100_10b[4:], width=bar_width, color='none', edgecolor='black', **iner_props)
+
 bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, label='H100_1B', color='white', hatch='---')
 bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, color='none', edgecolor='black', **iner_props)
 
-bar6 = ax.bar(x_indexes[4:] + bar_width + bar_offset, h100_10b[4:], width=bar_width, color=colors[9])
-bar6 = ax.bar(x_indexes[4:] + bar_width + bar_offset, h100_10b[4:], width=bar_width, color='none', edgecolor='black', **iner_props)
+
 
 
 # plt.rcParams['hatch.color'] = colors[4]
@@ -122,8 +124,8 @@ labels = labels1 + labels2
 ax.legend(handles, labels, loc=2, ncol=3, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 13})
 
 # Set axis limits
-ax.set_ylim([0, 1250])
-ax2.set_ylim([0, 300])
+ax.set_ylim([0, 1350])
+ax2.set_ylim([0, 500])
 
 # Save the figure
 fig.tight_layout()
