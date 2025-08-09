@@ -15,16 +15,16 @@ df = pd.read_csv("data/Jac2D9pt_throughput.csv")
 # Extract data
 xticks = df["grid_size"]
 hand_u280 = df["handcoded_u280"]
-cgen_4096_u280 = df["codegen_L_4096_H_10_u280"]
-cgen_8192_u280 = df["codegen_L_8192_u280"]
+cgen_u280 = df["codegen_u280"]
+# cgen_8192_u280 = df["codegen_L_8192_u280"]
 hand_vck5000 = df["handcoded_vck5000"]
 cgen_vck5000 = df["codegen_vck5000"]
 h100_1b = df["H100_1B"]
 h100_100b = df["H100_100B"]
 
-cgen_4096_u280_power = df["pow_C_4096_U280_1000B"]
+cgen_u280_power = df["pow_C_U280_1000B"]
 cgen_vck5000_power = df["pow_C_VCK5000_1000B"]
-cgen_8192_u280_power = df["pow_C_8192_U280_1000B"]
+# cgen_8192_u280_power = df["pow_C_8192_U280_1000B"]
 h100_power = df["pow_H100_1000B"]
 
 # Configure plot settings
@@ -40,10 +40,10 @@ bar_offset = 0.0
 x_indexes = np.arange(len(xticks))
 
 # Plot throughput as bars
-plt.rcParams['hatch.color'] = colors[5]
-bar2 = ax.bar(x_indexes - bar_width + bar_offset, cgen_4096_u280, width=bar_width, label='c_U280', color=colors[5])
-bar2 = ax.bar(x_indexes - bar_width + bar_offset, cgen_4096_u280, width=bar_width, color='none', edgecolor='black', **iner_props)
-# bar2 = ax.bar(x_indexes - bar_width, cgen_4096_u280, width=bar_width, color='none', edgecolor='white', **outer_props)
+# plt.rcParams['hatch.color'] = colors[5]
+bar2 = ax.bar(x_indexes[:7] - bar_width + bar_offset, cgen_u280[:7], width=bar_width, label='c_U280', color=colors[5])
+bar2 = ax.bar(x_indexes[:7] - bar_width + bar_offset, cgen_u280[:7], width=bar_width, color='none', edgecolor='black', **iner_props)
+# bar2 = ax.bar(x_indexes - bar_width, cgen_u280, width=bar_width, color='none', edgecolor='white', **outer_props)
 
 # bar3 = ax.bar(x_indexes[:4] - bar_width, cgen_8192_u280[:4], width=bar_width, label='c_U280_8192', hatch='///', color='white')
 # # bar3 = ax.bar(x_indexes[:4] - bar_width, cgen_8192_u280[:4], width=bar_width, color='none', edgecolor='white', **outer_props)
@@ -52,19 +52,25 @@ bar2 = ax.bar(x_indexes - bar_width + bar_offset, cgen_4096_u280, width=bar_widt
 plt.rcParams['hatch.color'] = colors[5]
 bar1 = ax.bar(x_indexes - bar_width + bar_offset, hand_u280, width=bar_width, label='h_U280', color='white', hatch='xxx')
 bar1 = ax.bar(x_indexes - bar_width + bar_offset, hand_u280, width=bar_width, color='none', edgecolor='black', **iner_props)
+
+bar2 = ax.bar(x_indexes[7:] - bar_width + bar_offset, cgen_u280[7:], width=bar_width, label='c_U280', color=colors[5])
+bar2 = ax.bar(x_indexes[7:] - bar_width + bar_offset, cgen_u280[7:], width=bar_width, color='none', edgecolor='black', **iner_props)
 # bar1 = ax.bar(x_indexes - bar_width, hand_u280, width=bar_width, color='none', edgecolor='white', **outer_props)
 
-bar3 = ax.bar(x_indexes[7:] - bar_width + bar_offset, cgen_8192_u280[7:], width=bar_width,  color=colors[5])
+# bar3 = ax.bar(x_indexes - bar_width + bar_offset, cgen_u280, width=bar_width,  color=colors[5])
 # bar3 = ax.bar(x_indexes[:4] - bar_width, cgen_8192_u280[:4], width=bar_width, color='none', edgecolor='white', **outer_props)
-bar3 = ax.bar(x_indexes[7:] - bar_width + bar_offset, cgen_8192_u280[7:], width=bar_width, color='none', edgecolor='black', **iner_props)
+# bar3 = ax.bar(x_indexes[7:] - bar_width + bar_offset, cgen_8192_u280[7:], width=bar_width, color='none', edgecolor='black', **iner_props)
 
 
-bar5 = ax.bar(x_indexes + bar_offset, cgen_vck5000, width=bar_width, label='c_VCK', color=colors[0])
-bar5 = ax.bar(x_indexes + bar_offset, cgen_vck5000, width=bar_width, color='none', edgecolor='black', **iner_props)
+bar5 = ax.bar(x_indexes[:5] + bar_offset, cgen_vck5000[:5], width=bar_width, label='c_VCK', color=colors[0])
+bar5 = ax.bar(x_indexes[:5] + bar_offset, cgen_vck5000[:5], width=bar_width, color='none', edgecolor='black', **iner_props)
 
 plt.rcParams['hatch.color'] = colors[0]
 bar4 = ax.bar(x_indexes + bar_offset, hand_vck5000, width=bar_width, label='h_VCK', color='white', hatch='///')
 bar4 = ax.bar(x_indexes + bar_offset, hand_vck5000, width=bar_width, color='none', edgecolor='black', **iner_props)
+
+bar5 = ax.bar(x_indexes[5:] + bar_offset, cgen_vck5000[5:], width=bar_width, label='c_VCK', color=colors[0])
+bar5 = ax.bar(x_indexes[5:] + bar_offset, cgen_vck5000[5:], width=bar_width, color='none', edgecolor='black', **iner_props)
 
 bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_100b, width=bar_width, label='H100_100B', color=colors[9])
 bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_100b , width=bar_width, color='none', edgecolor='black', **iner_props)
@@ -86,12 +92,12 @@ bar7 = ax.bar(x_indexes  + bar_width + bar_offset, h100_1b, width=bar_width, col
 
 # Add secondary y-axis for power usage
 ax2 = ax.twinx()
-# ax2.plot(x_indexes, cgen_4096_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_4096 energy", color='#6d65a3', markeredgecolor='#000000')
-ax2.plot(x_indexes - bar_width, cgen_8192_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size + 2, label="U280 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[12])
+# ax2.plot(x_indexes, cgen_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_4096 energy", color='#6d65a3', markeredgecolor='#000000')
+ax2.plot(x_indexes - bar_width, cgen_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size + 2, label="U280 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[12])
 ax2.plot(x_indexes, cgen_vck5000_power, linestyle='dashdot', marker='d', markersize=power_marker_size, label="VCK5000 energy", color='none', markerfacecolor='white', markeredgewidth=3, markeredgecolor=colors[13])
 ax2.plot(x_indexes + bar_width, h100_power, linestyle='dashdot', marker='o', markersize=power_marker_size, label="H100 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[10])
 
-# ax2.plot(x_indexes, cgen_4096_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_4096 energy", color='#6d65a3', markeredgecolor='#000000')
+# ax2.plot(x_indexes, cgen_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_4096 energy", color='#6d65a3', markeredgecolor='#000000')
 # ax2.plot(x_indexes, cgen_8192_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_8192 energy", color='#d9b3e6', markeredgecolor='#000000')
 # ax2.plot(x_indexes, h100_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="H100 energy", color='#4dc46d', markeredgecolor='#000000')
 
@@ -124,7 +130,7 @@ labels = labels1 + labels2
 ax.legend(handles, labels, loc=2, ncol=3, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 13})
 
 # Set axis limits
-ax.set_ylim([0, 1800])
+ax.set_ylim([0, 2000])
 ax2.set_ylim([0, 45])
 
 # Save the figure
