@@ -113,7 +113,7 @@ ax.legend(handles, labels, loc=2, ncol=3, facecolor='w', framealpha=1, edgecolor
 
 # Set axis limits
 ax.set_ylim([0, 1300])
-ax2.set_ylim([0, 45])
+ax2.set_ylim([0, 70])
 
 # Save the figure
 fig.tight_layout()

@@ -114,7 +114,7 @@ labels = labels1 + labels2
 ax.legend(handles, labels, loc=2, ncol=3, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 13})
 
 # Set axis limits
-ax.set_ylim([0, 1520])
+ax.set_ylim([0, 1100])
 ax2.set_ylim([0, 50])
 
 # Save the figure
