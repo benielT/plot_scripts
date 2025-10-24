@@ -1,5 +1,5 @@
 
-general_font_size = 13
+general_font_size = 14
 power_marker_size = 12
 throughput_marker_size = 12
 label_font_size = 18
