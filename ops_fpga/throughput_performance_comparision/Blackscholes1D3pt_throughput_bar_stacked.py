@@ -3,8 +3,9 @@ import numpy as np
 from matplotlib.ticker import FormatStrFormatter
 import pandas as pd
 from barplot_params import general_font_size, power_marker_size, throughput_marker_size, label_font_size, \
-    legends_font_size, bar_width, iner_props, outer_props, energy_bar_gap, energy_bar_width, colors, bar_offset
-
+    legends_font_size, bar_width, iner_props, outer_props, energy_bar_gap, energy_bar_width, colors, bar_offset, \
+    fig_size, x_ticks_font_size, y_ticks_font_size
+    
 # Color Palette
 # colors = ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600', '#34a853', '#ce87e6']
 # colors = ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f', '#edc949', '#af7aa1' ]
@@ -16,7 +17,7 @@ df = pd.read_csv("data/Blackscholes1D3pt_throughput.csv")
 # Extract data
 xticks = df["grid_size"][1:].astype(str)
 hand_u280 = df["handcoded_u280"][1:]
-cgen_u280 = df["codegen_u280"][1:]
+cgen_u280 = df["codegen_u280_281MHz"][1:]
 hand_vck5000 = df["handcoded_vck5000"][1:]
 cgen_vck5000 = df["codegen_vck5000"][1:]
 cgen_u280_power = df["pow_C_U280_10000B"][1:]
@@ -27,7 +28,7 @@ h100_50b = df["H100_50B"][1:]
 
 
 # Configure plot settings
-plt.rcParams["figure.figsize"] = (9, 4.5)
+plt.rcParams["figure.figsize"] = fig_size
 plt.rcParams.update({'font.size': general_font_size})
 plt.rcParams['hatch.linewidth'] = 2
 plt.rcParams['hatch.color'] = colors[1]
@@ -105,7 +106,7 @@ handles1, labels1 = ax.get_legend_handles_labels()
 handles2, labels2 = ax2.get_legend_handles_labels()
 handles = handles1 + handles2
 labels = labels1 + labels2
-ax.legend(handles, labels, loc=2, ncol=1, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 13})
+ax.legend(handles, labels, loc=2, ncol=1, facecolor='w', framealpha=1, edgecolor='black', prop={'size': legends_font_size})
 
 # Set axis limits
 ax.set_ylim([0, 1000])

@@ -58,7 +58,7 @@ plt.rcParams['hatch.color'] = colors[0]
 bar4 = ax.bar(x_indexes + bar_offset, hand_vck5000, width=bar_width, label='h_VCK', color='white', hatch='///')
 bar4 = ax.bar(x_indexes + bar_offset, hand_vck5000, width=bar_width, color='none', edgecolor='black', **iner_props)
 
-bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_50b, width=bar_width, label='H100_100B', color=colors[9])
+bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_50b, width=bar_width, label='H100_10B', color=colors[9])
 bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_50b, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 plt.rcParams['hatch.color'] = colors[9]

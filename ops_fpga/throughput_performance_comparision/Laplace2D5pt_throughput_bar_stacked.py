@@ -3,7 +3,7 @@ import numpy as np
 from matplotlib.ticker import FormatStrFormatter
 import pandas as pd
 from barplot_params import general_font_size, power_marker_size, throughput_marker_size, label_font_size, \
-    legends_font_size, bar_width, iner_props, outer_props, energy_bar_gap, energy_bar_width, colors, bar_offset
+    legends_font_size, bar_width, iner_props, outer_props, energy_bar_gap, energy_bar_width, colors, bar_offset, fig_size
 
 # Color Palette
 # colors = ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600', '#34a853', '#ce87e6']
@@ -29,7 +29,7 @@ h100_power = df["pow_H100_1000B"]
 
 
 # Configure plot settings
-plt.rcParams["figure.figsize"] = (9, 4.5)
+plt.rcParams["figure.figsize"] = fig_size
 plt.rcParams.update({'font.size': general_font_size})
 plt.rcParams['hatch.linewidth'] = 2
 plt.rcParams['hatch.color'] = colors[1]
