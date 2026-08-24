@@ -14,17 +14,17 @@ xticks = df["grid_size"][:-1].astype(str)
 hand_u280 = df["handcoded_u280"][:-1]
 cgen_wo_batching_u280 = df["codegen_u280_281MHz"][:-1]
 cgen_b1_u280_loopback = batched_df["codegen_2048SLR_10HLS_LOOP_1B"][:-1]
-cgen_b1_u280_datcopy = batched_df["codegen_2048SLR_5HLS_DATCPY_1B"][:-1]
+cgen_b1_u280_datcopy = batched_df["codegen_2048SLR_32HLS_DATCPY_1B"][:-1]
 cgen_b10_u280_loopback = batched_df["codegen_2048SLR_10HLS_LOOP_10B"][:-1]
-cgen_b10_u280_datcopy = batched_df["codegen_2048SLR_5HLS_DATCPY_10B"][:-1]
+cgen_b10_u280_datcopy = batched_df["codegen_2048SLR_32HLS_DATCPY_10B"][:-1]
 cgen_b20_u280_loopback = batched_df["codegen_2048SLR_10HLS_LOOP_20B"][:-1]
-cgen_b20_u280_datcopy = batched_df["codegen_2048SLR_5HLS_DATCPY_20B"][:-1]
+cgen_b20_u280_datcopy = batched_df["codegen_2048SLR_32HLS_DATCPY_20B"][:-1]
 cgen_b50_u280_loopback = batched_df["codegen_2048SLR_10HLS_LOOP_50B"][:-1]
-cgen_b50_u280_datcopy = batched_df["codegen_2048SLR_5HLS_DATCPY_50B"][:-1]
+cgen_b50_u280_datcopy = batched_df["codegen_2048SLR_32HLS_DATCPY_50B"][:-1]
 cgen_b100_u280_loopback = batched_df["codegen_2048SLR_10HLS_LOOP_100B"][:-1]
-cgen_b100_u280_datcopy = batched_df["codegen_2048SLR_5HLS_DATCPY_100B"][:-1]
+cgen_b100_u280_datcopy = batched_df["codegen_2048SLR_32HLS_DATCPY_100B"][:-1]
 cgen_b200_u280_loopback = batched_df["codegen_2048SLR_10HLS_LOOP_200B"][:-1]
-cgen_b200_u280_datcopy = batched_df["codegen_2048SLR_5HLS_DATCPY_200B"][:-1]
+cgen_b200_u280_datcopy = batched_df["codegen_2048SLR_32HLS_DATCPY_200B"][:-1]
 # u280_imp = (df['codegen_u280'] - df["handcoded_u280"]) / df["handcoded_u280"] * 100
 # vck5000_imp = (df['codegen_vck5000'] - df["handcoded_vck5000"]) / df["handcoded_vck5000"] * 100
 h100_1b = df["H100_1B"][:-1]
@@ -33,7 +33,7 @@ h100_50b = df["H100_50B"][:-1]
 # h100_power = df["pow_H100_1000B"]
 
 # Configure plot settings
-plt.rcParams["figure.figsize"] = (12, 6)
+plt.rcParams["figure.figsize"] = (12, 5)
 plt.rcParams.update({'font.size': general_font_size})
 
 fig, ax = plt.subplots()
@@ -82,7 +82,7 @@ labels = labels1 #+ labels2
 ax.legend(handles, labels, loc=2, ncol=6, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 12})
 
 # Set axis limits
-ax.set_ylim([0, 850])
+ax.set_ylim([0, 950])
 # ax2.set_ylim([0, 50])
 
 # Save the figure
