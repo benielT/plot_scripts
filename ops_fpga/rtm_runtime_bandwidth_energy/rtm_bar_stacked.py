@@ -3,7 +3,8 @@ import numpy as np
 from matplotlib.ticker import FormatStrFormatter
 import pandas as pd
 from barplot_params import general_font_size, power_marker_size, throughput_marker_size, label_font_size, \
-    legends_font_size, bar_width, iner_props, outer_props, energy_bar_gap, energy_bar_width, colors, bar_offset
+    legends_font_size, bar_width, iner_props, outer_props, energy_bar_gap, energy_bar_width, colors, bar_offset, \
+    size_multiplier
 
 # Color Palette
 # colors = ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600', '#34a853', '#ce87e6']
@@ -29,9 +30,9 @@ cgen_vck5000_power = df["pow_C_vck5000_100B"]
 h100_power = df["pow_H100_100B"]
 
 # Configure plot settings
-plt.rcParams["figure.figsize"] = (9, 4.3)
+plt.rcParams["figure.figsize"] = (9 * size_multiplier, 4.3 * size_multiplier)
 plt.rcParams.update({'font.size': general_font_size})
-plt.rcParams['hatch.linewidth'] = 2
+plt.rcParams['hatch.linewidth'] = 4
 plt.rcParams['hatch.color'] = colors[1]
 
 fig, ax = plt.subplots()
@@ -53,7 +54,7 @@ bar5 = ax.bar(x_indexes + bar_offset, cgen_vck5000, width=bar_width, label='c_VC
 bar5 = ax.bar(x_indexes + bar_offset, cgen_vck5000, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 plt.rcParams['hatch.color'] = colors[0]
-bar4 = ax.bar(x_indexes + bar_offset, hand_vck5000, width=bar_width, label='h_VCK', color='white', hatch='///')
+bar4 = ax.bar(x_indexes + bar_offset, hand_vck5000, width=bar_width, label='h_VCK', color='white', hatch='/')
 bar4 = ax.bar(x_indexes + bar_offset, hand_vck5000, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, label='H100_1B', color=colors[9])
@@ -76,9 +77,9 @@ bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, colo
 
 # Add secondary y-axis for power usage
 ax2 = ax.twinx()
-ax2.plot(x_indexes[4:] - bar_width, cgen_u55c_power[4:], linestyle='dashdot', marker='^', markersize=power_marker_size + 2, label="U55c energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[12])
-ax2.plot(x_indexes[4:], cgen_vck5000_power[4:], linestyle='dashdot', marker='d', markersize=power_marker_size, label="VCK5000 energy", color='none', markerfacecolor='white', markeredgewidth=3, markeredgecolor=colors[13])
-ax2.plot(x_indexes[4:] + bar_width, h100_power[4:], linestyle='dashdot', marker='o', markersize=power_marker_size, label="H100 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[10])
+ax2.plot(x_indexes[4:] - bar_width, cgen_u55c_power[4:], linestyle='dashdot', marker='^', markersize=power_marker_size + 2, label="U55c energy", color='none', markerfacecolor='white', markeredgewidth=3.5 * size_multiplier, markeredgecolor=colors[12])
+ax2.plot(x_indexes[4:], cgen_vck5000_power[4:], linestyle='dashdot', marker='d', markersize=power_marker_size, label="VCK5000 energy", color='none', markerfacecolor='white', markeredgewidth=3 * size_multiplier, markeredgecolor=colors[13])
+ax2.plot(x_indexes[4:] + bar_width, h100_power[4:], linestyle='dashdot', marker='o', markersize=power_marker_size, label="H100 energy", color='none', markerfacecolor='white', markeredgewidth=3.5 * size_multiplier, markeredgecolor=colors[10])
 
 # ax2.plot(x_indexes, cgen_4096_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_4096 energy", color='#6d65a3', markeredgecolor='#000000')
 # ax2.plot(x_indexes, cgen_8192_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_8192 energy", color='#d9b3e6', markeredgecolor='#000000')
@@ -98,7 +99,7 @@ ax.yaxis.set_major_formatter(FormatStrFormatter('%.0f'))
 ax2.yaxis.set_major_formatter(FormatStrFormatter('%.0f'))
 
 # Labels, grid, and legend
-ax.grid(which='both', axis='y', linewidth=1, alpha=0.5)
+ax.grid(which='both', axis='y', linewidth=1 * size_multiplier, alpha=0.5)
 ax.set_xlabel('Mesh Size', fontsize=label_font_size)
 ax.set_ylabel('Throughput (MPts/s)', fontsize=label_font_size)
 ax2.set_ylabel('Energy: 100 Batches (kJ)', fontsize=label_font_size)
@@ -118,4 +119,4 @@ ax2.set_ylim([0, 600])
 
 # Save the figure
 fig.tight_layout()
-plt.savefig("output/rtm_barplot.pdf", bbox_inches='tight')
+plt.savefig("output/rtm_barplot.png", bbox_inches='tight')
