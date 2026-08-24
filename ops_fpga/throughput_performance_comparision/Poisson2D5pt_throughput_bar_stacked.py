@@ -3,7 +3,8 @@ import numpy as np
 from matplotlib.ticker import FormatStrFormatter
 import pandas as pd
 from barplot_params import general_font_size, power_marker_size, throughput_marker_size, label_font_size, \
-    legends_font_size, bar_width, iner_props, outer_props, energy_bar_gap, energy_bar_width, colors, bar_offset, fig_size
+    legends_font_size, bar_width, iner_props, outer_props, energy_bar_gap, energy_bar_width, colors, bar_offset, fig_size, \
+    size_multiplier
 
 # Color Palette
 # colors = ['#003f5c', '#58508d', '#bc5090', '#ff6361', '#ffa600', '#34a853', '#ce87e6']
@@ -29,8 +30,8 @@ h100_100b = df["H100_100B"]
 
 # Configure plot settings
 plt.rcParams["figure.figsize"] = fig_size
-plt.rcParams.update({'font.size': general_font_size})
-plt.rcParams['hatch.linewidth'] = 2
+plt.rcParams.update({'font.size': general_font_size - 2* size_multiplier})
+plt.rcParams['hatch.linewidth'] = 4
 plt.rcParams['hatch.color'] = colors[1]
 
 fig, ax = plt.subplots()
@@ -44,7 +45,7 @@ bar2 = ax.bar(x_indexes - bar_width + bar_offset, cgen_u280, width=bar_width, la
 bar2 = ax.bar(x_indexes - bar_width + bar_offset, cgen_u280, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 plt.rcParams['hatch.color'] = colors[5]
-bar1 = ax.bar(x_indexes - bar_width + bar_offset, hand_u280, width=bar_width, label='h_U280', color='white', hatch='xxx')
+bar1 = ax.bar(x_indexes - bar_width + bar_offset, hand_u280, width=bar_width, label='h_U280', color='white', hatch='x')
 bar1 = ax.bar(x_indexes - bar_width + bar_offset, hand_u280, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 
@@ -52,14 +53,14 @@ bar5 = ax.bar(x_indexes + bar_offset, cgen_vck5000, width=bar_width, label='c_VC
 bar5 = ax.bar(x_indexes + bar_offset, cgen_vck5000, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 plt.rcParams['hatch.color'] = colors[0]
-bar4 = ax.bar(x_indexes + bar_offset, hand_vck5000, width=bar_width, label='h_VCK', color='white', hatch='///')
+bar4 = ax.bar(x_indexes + bar_offset, hand_vck5000, width=bar_width, label='h_VCK', color='white', hatch='/')
 bar4 = ax.bar(x_indexes + bar_offset, hand_vck5000, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_100b, width=bar_width, label='H100_100B', color=colors[9])
 bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_100b, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 plt.rcParams['hatch.color'] = colors[9]
-bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, label='H100_1B', color='white', hatch='---')
+bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, label='H100_1B', color='white', hatch='-')
 bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 
@@ -75,9 +76,9 @@ bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, colo
 
 # Add secondary y-axis for power usage
 ax2 = ax.twinx()
-ax2.plot(x_indexes - bar_width, cgen_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size + 2, label="U280 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[12])
-ax2.plot(x_indexes, cgen_vck5000_power, linestyle='dashdot', marker='d', markersize=power_marker_size, label="VCK5000 energy", color='none', markerfacecolor='white', markeredgewidth=3, markeredgecolor=colors[13])
-ax2.plot(x_indexes + bar_width, h100_power, linestyle='dashdot', marker='o', markersize=power_marker_size, label="H100 energy", color='none', markerfacecolor='white', markeredgewidth=3.5, markeredgecolor=colors[10])
+ax2.plot(x_indexes - bar_width, cgen_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size + 2, label="U280 energy", color='none', markerfacecolor='white', markeredgewidth=3.5 * size_multiplier, markeredgecolor=colors[12])
+ax2.plot(x_indexes, cgen_vck5000_power, linestyle='dashdot', marker='d', markersize=power_marker_size, label="VCK5000 energy", color='none', markerfacecolor='white', markeredgewidth=3 * size_multiplier, markeredgecolor=colors[13])
+ax2.plot(x_indexes + bar_width, h100_power, linestyle='dashdot', marker='o', markersize=power_marker_size, label="H100 energy", color='none', markerfacecolor='white', markeredgewidth=3.5 * size_multiplier, markeredgecolor=colors[10])
 
 # ax2.plot(x_indexes, cgen_4096_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_4096 energy", color='#6d65a3', markeredgecolor='#000000')
 # ax2.plot(x_indexes, cgen_8192_u280_power, linestyle='dashdot', marker='^', markersize=power_marker_size, label="U280_8192 energy", color='#d9b3e6', markeredgecolor='#000000')
@@ -97,7 +98,7 @@ ax.yaxis.set_major_formatter(FormatStrFormatter('%.0f'))
 ax2.yaxis.set_major_formatter(FormatStrFormatter('%.0f'))
 
 # Labels, grid, and legend
-ax.grid(which='both', axis='y', linewidth=1, alpha=0.5)
+ax.grid(which='both', axis='y', linewidth=1 * size_multiplier, alpha=0.5)
 ax.set_xlabel('Mesh Size', fontsize=label_font_size)
 ax.set_ylabel('Throughput (GFLOP/s)', fontsize=label_font_size)
 ax2.set_ylabel('Energy: 1k Batches (kJ)', fontsize=label_font_size)
@@ -109,7 +110,7 @@ handles1, labels1 = ax.get_legend_handles_labels()
 handles2, labels2 = ax2.get_legend_handles_labels()
 handles = handles1 + handles2
 labels = labels1 + labels2
-ax.legend(handles, labels, loc=2, ncol=3, facecolor='w', framealpha=1, edgecolor='black', prop={'size': 13})
+ax.legend(handles, labels, loc=2, ncol=3, facecolor='w', framealpha=1, edgecolor='black', prop={'size': legends_font_size - size_multiplier})
 
 # Set axis limits
 ax.set_ylim([0, 1300])
@@ -117,4 +118,4 @@ ax2.set_ylim([0, 70])
 
 # Save the figure
 fig.tight_layout()
-plt.savefig("output/poisson2d5pt_throughput_barplot.pdf", bbox_inches='tight')
+plt.savefig("output/poisson2d5pt_throughput_barplot.png", bbox_inches='tight')
