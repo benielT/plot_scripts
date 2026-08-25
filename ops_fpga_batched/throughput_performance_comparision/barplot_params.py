@@ -16,4 +16,4 @@ iner_props = {'linestyle':'-', 'linewidth':1.0 * size_multiplier}
 outer_props = {'linestyle':'-', 'linewidth':1.0 * size_multiplier}
 fig_size = (9 * size_multiplier, 5 * size_multiplier)
 
-colors = ['#f05039', '#E57a77', '#eebab4', '#1f449c', '#3d65a5', '#7ca1cc', '#a8b6cc', '#8a5e00', '#ffc626', '#e6cf8e', '#444852', '#5c9e73', '#1a407d', '#38100b']
+colors = ["#ce3e28", '#E57a77', '#eebab4', '#1f449c', '#3d65a5', '#7ca1cc', '#a8b6cc', '#8a5e00', '#ffc626', '#e6cf8e', '#444852', '#5c9e73', '#1a407d', '#38100b']

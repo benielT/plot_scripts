@@ -143,14 +143,14 @@ batch_sizes = np.array(['1B', '10B', '20B', '50B', '100B', '200B'])
 # print("U280 datacopy envelope source batch size:", batch_sizes[u280_cp_envelop_source])
 # print("VCK5000 loopback envelope source batch size:", batch_sizes[vck5000_lb_envelop_source])
 # print("VCK5000 datacopy envelope source batch size:", batch_sizes[vck5000_cp_envelop_source])
-ax.plot(x_indexes, cgen_b1_u280_loopback_pow, linestyle='dashdot', marker='o', markersize=(power_marker_size), label="U280 WOB", color=colors[0], markerfacecolor='white', markeredgewidth=3.5 * size_multiplier, markeredgecolor=colors[0])
-ax.plot(x_indexes, cgen_batching_u280_lb_envelop_pow, linestyle='dashdot', marker='^', markersize=(power_marker_size), label="LB U280 ENV", color=colors[7], markerfacecolor='white', markeredgewidth=3.5 * size_multiplier, markeredgecolor=colors[7])
-ax.plot(x_indexes, cgen_b200_u280_datcopy_pow, linestyle='dashdot', marker='d', markersize=(power_marker_size), label="CP U280 200B", color=colors[8], markerfacecolor='white', markeredgewidth=3.5 * size_multiplier, markeredgecolor=colors[8])
+ax.plot(x_indexes, cgen_b1_u280_loopback_pow, linestyle='--', marker='o', markersize=(power_marker_size), label="U280 WOB", color=colors[0], markerfacecolor='white', markeredgewidth=2 * size_multiplier, markeredgecolor=colors[0])
+ax.plot(x_indexes, cgen_batching_u280_lb_envelop_pow, linestyle='dashdot', marker='^', markersize=(power_marker_size), label="LB U280 ENV", color=colors[7], markerfacecolor='white', markeredgewidth=2 * size_multiplier, markeredgecolor=colors[7])
+ax.plot(x_indexes, cgen_b200_u280_datcopy_pow, linestyle='-', marker='d', markersize=(power_marker_size), label="CP U280 200B", color=colors[8], markerfacecolor='white', markeredgewidth=2 * size_multiplier, markeredgecolor=colors[8])
 
-ax.plot(x_indexes, cgen_b1_vck5000_loopback_pow, linestyle='dashdot', marker='o', markersize=(power_marker_size), label="VCK5 WOB", color=colors[10], markerfacecolor='white', markeredgewidth=3.5 * size_multiplier, markeredgecolor=colors[10])
+ax.plot(x_indexes, cgen_b1_vck5000_loopback_pow, linestyle='--', marker='o', markersize=(power_marker_size), label="VCK5 WOB", color=colors[10], markerfacecolor='white', markeredgewidth=2 * size_multiplier, markeredgecolor=colors[10])
 
-ax.plot(x_indexes, cgen_batching_vck5000_lb_envelop_pow, linestyle='dashdot', marker='^', markersize=(power_marker_size), label="LB VCK5 ENV", color=colors[3], markerfacecolor='white', markeredgewidth=3.5 * size_multiplier, markeredgecolor=colors[3])
-ax.plot(x_indexes, cgen_b200_vck5000_datcopy_pow, linestyle='dashdot', marker='o', markersize=(power_marker_size), label="CP VCK5 200B", color=colors[11], markerfacecolor='white', markeredgewidth=3.5 * size_multiplier, markeredgecolor=colors[11])
+ax.plot(x_indexes, cgen_batching_vck5000_lb_envelop_pow, linestyle='dashdot', marker='^', markersize=(power_marker_size), label="LB VCK5 ENV", color=colors[3], markerfacecolor='white', markeredgewidth=2 * size_multiplier, markeredgecolor=colors[3])
+ax.plot(x_indexes, cgen_b200_vck5000_datcopy_pow, linestyle='-', marker='o', markersize=(power_marker_size), label="CP VCK5 200B", color=colors[11], markerfacecolor='white', markeredgewidth=2 * size_multiplier, markeredgecolor=colors[11])
 
 
 

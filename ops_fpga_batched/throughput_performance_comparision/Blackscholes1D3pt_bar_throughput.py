@@ -82,7 +82,7 @@ for name, value in geometric_means.items():
 # Configure plot settings
 plt.rcParams["figure.figsize"] = fig_size
 plt.rcParams.update({'font.size': general_font_size})
-plt.rcParams['hatch.linewidth'] = 4  # Hatch line width
+plt.rcParams['hatch.linewidth'] = 3  # Hatch line width
 plt.rcParams['hatch.color'] = colors[1]
 
 fig, ax = plt.subplots()
@@ -105,7 +105,7 @@ u280_cp_bars = ax.bar(x_indexes - bar_width + bar_offset, cgen_batching_u280_cp_
 ax.bar(x_indexes - bar_width + bar_offset, cgen_batching_u280_cp_envelop, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 plt.rcParams['hatch.color'] = colors[5]
-bar3 = ax.bar(x_indexes - bar_width + bar_offset, cgen_wo_batching_u280, width=bar_width, label='LB_WOB_U280', color='white', hatch='x')
+bar3 = ax.bar(x_indexes - bar_width + bar_offset, cgen_wo_batching_u280, width=bar_width, label='LB_WOB_U280', color='white', hatch='xx')
 bar3 = ax.bar(x_indexes - bar_width + bar_offset, cgen_wo_batching_u280, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 #VCK5000
@@ -116,7 +116,7 @@ vck5000_cp_bars = ax.bar(x_indexes + bar_offset, cgen_batching_vck5000_cp_envelo
 ax.bar(x_indexes + bar_offset, cgen_batching_vck5000_cp_envelop, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 plt.rcParams['hatch.color'] = colors[1]
-bar6 = ax.bar(x_indexes + bar_offset, cgen_wo_batching_vck5000, width=bar_width, label='LB_WOB_VCK5', color='white', hatch='x')
+bar6 = ax.bar(x_indexes + bar_offset, cgen_wo_batching_vck5000, width=bar_width, label='LB_WOB_VCK5', color='white', hatch='xx')
 bar6 = ax.bar(x_indexes + bar_offset, cgen_wo_batching_vck5000, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 #H100
@@ -124,7 +124,7 @@ bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_50b, width=bar_width, lab
 bar6 = ax.bar(x_indexes + bar_width + bar_offset, h100_50b, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 plt.rcParams['hatch.color'] = colors[9]
-bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, label='H100_1B', color='white', hatch='-')
+bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, label='H100_1B', color='white', hatch='//')
 bar7 = ax.bar(x_indexes + bar_width + bar_offset, h100_1b, width=bar_width, color='none', edgecolor='black', **iner_props)
 
 for bars, source in ((u280_lb_bars, u280_lb_envelop_source),
