@@ -67,6 +67,19 @@ geometric_means = {
 for name, value in geometric_means.items():
     print(f'{name} geometric mean: {value:.6f}')
 
+maximum_throughputs = {
+    'U280 loopback envelope': np.nanmax(cgen_batching_u280_lb_envelop),
+    'U280 datacopy envelope': np.nanmax(cgen_batching_u280_cp_envelop),
+    'VCK5000 loopback envelope': np.nanmax(cgen_batching_vck5000_lb_envelop),
+    'VCK5000 datacopy envelope': np.nanmax(cgen_batching_vck5000_cp_envelop),
+    'U280 without batching': np.nanmax(cgen_b1_u280_loopback),
+    'VCK5000 without batching': np.nanmax(cgen_b1_vck5000_loopback),
+    'H100 100B': np.nanmax(h100_100b),
+}
+
+for name, value in maximum_throughputs.items():
+    print(f'{name} maximum throughput: {value:.6f}')
+
 # h100_power = df["pow_H100_1000B"]
 
 # Configure plot settings
